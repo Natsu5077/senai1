@@ -8,6 +8,10 @@ public class App {
       //if else
       // switch
       //termário ?
+          // exercicio 
+//* considerando os números 30, 50, 80 e 90 digite o valor da média arítmetica simples R=62,5  */
+/* considerando os valores 10, 40, 50, 80, 10 digite qual é a moda R= 10*/
+/* QUal a medida de tendência central que mostra o centro da amostra  R: mediana */
       int op= Integer.parseInt(JOptionPane.showInputDialog(
         "Qual o resultado de uma população? 1 parâmetro 2 estatistica?")) ;
         if(op==1){
@@ -34,26 +38,19 @@ public class App {
                     JOptionPane.showMessageDialog(null, "Resposta errada", "JStatistics",
                     JOptionPane.ERROR_MESSAGE );
                 }
-                String centro = JOptionPane.showInputDialog(
+                String mediana = JOptionPane.showInputDialog(
                     "Considerando os números fornecidos, qual valor representa o centro da amostra? (10, 40, 50, 80, 10)?");
-                String mediana = "mediana";
-                
-                if (centro.equalsIgnoreCase(mediana)) { 
+                mediana.toUpperCase();
+                if (mediana.equals(mediana)) { 
                     JOptionPane.showMessageDialog(null, "Certa resposta");
                 } else {
                     JOptionPane.showMessageDialog(null, "Resposta errada", "JStatistics", JOptionPane.ERROR_MESSAGE);
                 }
-                
-                
-    // else
 
         System.out.print("Alô Git");
     }
 }
-    // exercicio 
-//* considerando os números 30, 50, 80 e 90 digite o valor da média arítmetica simples R=62,5  */
-/* considerando os valores 10, 40, 50, 80, 10 digite qual é a moda R= 10*/
-/* QUal a medida de tendência central que mostra o centro da amostra  R: mediana */
+
 
     
 
