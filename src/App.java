@@ -28,7 +28,7 @@ public class App {
         } else {
             JOptionPane.showMessageDialog(null, "Resposta errada", "JStatistics", JOptionPane.ERROR_MESSAGE);
         }
-        
+
         int moda = Integer.parseInt(JOptionPane.showInputDialog(
             "Considerando os valores 10, 40, 50, 80, 10, digite qual é a moda"));        
                 if(moda==10){
@@ -50,7 +50,3 @@ public class App {
         System.out.print("Alô Git");
     }
 }
-
-
-    
-
