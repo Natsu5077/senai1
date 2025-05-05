@@ -1,52 +1,84 @@
 import javax.swing.JOptionPane;
-//import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) throws Exception {
-      // Boas vindas
-      //if
-      //if else
-      // switch
-      //termário ?
-          // exercicio 
-//* considerando os números 30, 50, 80 e 90 digite o valor da média arítmetica simples R=62,5  */
-/* considerando os valores 10, 40, 50, 80, 10 digite qual é a moda R= 10*/
-/* QUal a medida de tendência central que mostra o centro da amostra  R: mediana */
-      int op= Integer.parseInt(JOptionPane.showInputDialog(
-        "Qual o resultado de uma população? 1 parâmetro 2 estatistica?")) ;
-        if(op==1){
-        JOptionPane.showMessageDialog(null,
-         "Certa resposta");
-        } else{
-            JOptionPane.showMessageDialog(null, "Resposta errada", "JStatistics",
-            JOptionPane.ERROR_MESSAGE );
-        }
-        double aritimetica = Double.parseDouble(JOptionPane.showInputDialog(
-            "Considerando os números 30, 50, 80 e 90, digite o valor da média aritmética simples?"));
-        if (aritimetica == 62.5) {
-            JOptionPane.showMessageDialog(null, "Certa resposta");
-        } else {
-            JOptionPane.showMessageDialog(null, "Resposta errada", "JStatistics", JOptionPane.ERROR_MESSAGE);
+        System.out.println("Aula3 switch e loops");
+        // o switch é uma estrutura de seleção multipla
+        // um if mais organizado
+        //escolha
+        //case
+        // para resolver listas ou constantes
+        //menu 
+        //opção1
+        // opção2
+        int op = Integer.parseInt(JOptionPane.showInputDialog( "Digite uma opção 1- estatistica descritiva 2- probabilidade 3 - modelos probalisticos, 4 - sair"));
+        if (op!=4){ 
+            switch (op) {
+        
+            case 1:JOptionPane.showMessageDialog(null, "Estatistica descritiva"); break;
+            case 2:JOptionPane.showMessageDialog(null, "probabilidade"); break;
+            case 3: JOptionPane.showMessageDialog(null, "modelos probalisticos");  break;
+            default: JOptionPane.showMessageDialog(null, "Escolha invaLida");  break;
         }
 
-        int moda = Integer.parseInt(JOptionPane.showInputDialog(
-            "Considerando os valores 10, 40, 50, 80, 10, digite qual é a moda"));        
-                if(moda==10){
-                JOptionPane.showMessageDialog(null,
-                 "Certa resposta");
-                } else{
-                    JOptionPane.showMessageDialog(null, "Resposta errada", "JStatistics",
-                    JOptionPane.ERROR_MESSAGE );
-                }
-                String mediana = JOptionPane.showInputDialog(
-                    "Considerando os números fornecidos, qual valor representa o centro da amostra? (10, 40, 50, 80, 10)?");
-                mediana.toUpperCase();
-                if (mediana.equals(mediana)) { 
-                    JOptionPane.showMessageDialog(null, "Certa resposta");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Resposta errada", "JStatistics", JOptionPane.ERROR_MESSAGE);
-                }
+            //!= diferente
+        }
+        else {JOptionPane.showMessageDialog(null, "encerrando o sistema...");
 
-        System.out.print("Alô Git");
+        }
+
+        // como funciona os loops
+        // while
+        //for
+        // do while 
+        /*
+         * inicio/contador = 1 
+         * condição = 5
+         * incremento ou decremento = i=i+1
+         */
+       int contador = 1;
+       while (contador<=3) {
+        JOptionPane.showMessageDialog(null, "viva o Senai");
+        contador=contador +1;
+       }
+       int i= 1;
+       while (i<=5) {
+        System.out.println(i);
+        i++;
+       }
+       for (int cont = 1; cont <=10 ; cont++) {
+        System.out.println(cont);
+       }
+      String sair;
+       do {
+      
+         System.out.println("sair S ou N");
+        sair =    JOptionPane.showInputDialog("Digite: Sim ou Não");
+       } while (sair.equalsIgnoreCase("sim"));
+       // ajustar os bugs logicos do menu estatistico
+       //criar um loop
+       //deixar o usuario decidir quando sair
+      int menu;
+       do {
+           menu = Integer.parseInt(JOptionPane.showInputDialog("Digite uma opção:\n1 - Estatística Descritiva\n2 - Probabilidade\n3 - Modelos Probabilísticos\n4 - Sair"));
+
+           switch (menu) {
+               case 1:
+                   JOptionPane.showMessageDialog(null, "Estatística Descritiva");
+                   break;
+               case 2:
+                   JOptionPane.showMessageDialog(null, "Probabilidade");
+                   break;
+               case 3:
+                   JOptionPane.showMessageDialog(null, "Modelos Probabilísticos");
+                   break;
+               case 4:
+                   JOptionPane.showMessageDialog(null, "Saindo...");
+                   break;
+               default:
+                   JOptionPane.showMessageDialog(null, "Escolha inválida! Tente novamente.");
+                   break;
+           }
+       } while (menu != 4);
+   }
     }
-}
