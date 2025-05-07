@@ -3,7 +3,7 @@ import java.util.Random;
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Bem-Vindo ao lançamento de dados. Quer apostar hoje?");
-   //probabilidade
+    //probabilidade
     //espaço amostral
     // criar uma variavel que recebe a interface do jogo
     //Random
@@ -30,8 +30,9 @@ public class App {
             String estatistica = "jogo finalizado \n  "+
                                 "total de lançamentos:  "+ totaljogadas+"\n ";
                             for (int  i= 0; i <6; i ++){
-                                estatistica += "Número " + (i+1) +": "+ espaçoamostral [i]+ " vezes \n";
-                             } JOptionPane.showMessageDialog(null,  estatistica, "Finalizando jogo", JOptionPane.INFORMATION_MESSAGE);
+                            double porcentagem = (totaljogadas == 0) ? 0 : ((double) espaçoamostral[i] / totaljogadas) * 100;
+                            estatistica += "Número " + (i+1) +": "+ espaçoamostral [i]+ " vezes \n" + " vezes (" + String.format("%.2f", porcentagem) + "%)\n";
+                             } JOptionPane.showMessageDialog(null,  estatistica, "Finalizando jogo" , JOptionPane.INFORMATION_MESSAGE);
             break;
         }        
         // finalização 
@@ -41,12 +42,10 @@ public class App {
         double prob1 = 1.0 / 6.0; 
         double prob2 = (double) espaçoamostral[resultado - 1] / totaljogadas; 
         double prob1e2 = prob1; 
-        double bayes = (prob2 == 0) ? 0 : (prob1e2 * prob1) / prob2;        
+        double bayes = (prob2 == 0) ? 0 : (prob1e2 / prob2);       
         String saida = "Resultado do lançamento: " + resultado + "\n" +
-        "Probabilidade teorema de Bayes de sair " + resultado + ": " + String.format("%.4f", bayes);
+        "Probabilidade teorema de Bayes de sair " + resultado + "= " + String.format("%.4f", bayes);
         JOptionPane.showMessageDialog(null, saida, "Resultado", JOptionPane.INFORMATION_MESSAGE);
-                          
-    }
-    
+    }  
 }
 }
