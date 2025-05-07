@@ -27,7 +27,7 @@ public class App {
         if (opcao != JOptionPane.YES_OPTION) {
 
             //estatisticas
-            String estatistica = "jogo finalizado \n  "+
+            String estatistica = "jogo finalizado \n "+
                                 "total de lançamentos:  "+ totaljogadas+"\n ";
                             for (int  i= 0; i <6; i ++){
                             double porcentagem = (totaljogadas == 0) ? 0 : ((double) espaçoamostral[i] / totaljogadas) * 100;
