@@ -16,7 +16,6 @@ public class App {
             String casa = JOptionPane.showInputDialog("Por favor, digite o número do lote:");
             String complemento = JOptionPane.showInputDialog("Por favor, digite o complemento do endereço:");
 
-            // Entrada e validação de dados
             double largura = obterValorNumerico("Digite a largura do local em metros:");
             double comprimento = obterValorNumerico("Digite o comprimento do local em metros:");
             
@@ -29,7 +28,6 @@ public class App {
                 String opcaoServicoStr = JOptionPane.showInputDialog(
                     "Escolha um serviço:\n1 - Poda\n2 - Irrigação\n3 - Adubação\n4 - Paisagismo\n5 - Controle de pragas\n6 - Instalação de drenagem\n7 - Revitalização do jardim\n0 - Continuar");
 
-                // Validação de entrada numérica
                 int servico;
                 try {
                     servico = Integer.parseInt(opcaoServicoStr);
@@ -78,8 +76,6 @@ public class App {
             System.exit(0);
         }
     }
-
-    // Métodos para obter valores numéricos com validação
     private static double obterValorNumerico(String mensagem) {
         while (true) {
             try {
