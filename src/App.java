@@ -80,7 +80,7 @@ public class App {
     }
 
     // Métodos para obter valores numéricos com validação
-    private static double obterValorNumerico(String mensagem) {
+    public static double obterValorNumerico(String mensagem) {
         while (true) {
             try {
                 String entrada = JOptionPane.showInputDialog(mensagem);
@@ -91,7 +91,7 @@ public class App {
         }
     }
 
-    private static int obterValorInteiro(String mensagem) {
+    public static int obterValorInteiro(String mensagem) {
         while (true) {
             try {
                 String entrada = JOptionPane.showInputDialog(mensagem);
