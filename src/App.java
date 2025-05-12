@@ -40,6 +40,7 @@ public class App {
             6, 120.0,
             7, 200.0
         );
+      
 
         double valorTotal = 0;
 
@@ -53,6 +54,16 @@ public class App {
             double comprimento = obterValorNumerico("Digite o comprimento do local em metros:");
             double area = comprimento * largura;
             areas.add(area);
+
+           //lista de serviços em ordem 
+         List<Map.Entry<Integer, Double>> servicosOrdenados = new ArrayList<>(precosServicos.entrySet());
+         servicosOrdenados.sort(Map.Entry.comparingByValue());
+        StringBuilder servicosOrdenadosMsg = new StringBuilder("Serviços ofertados:\n");
+        for (Map.Entry<Integer, Double> entry : servicosOrdenados) {
+        servicosOrdenadosMsg.append(entry.getKey()).append(" - ").append(servicosDisponiveis.get(entry.getKey()))
+                        .append(" (R$ ").append(entry.getValue()).append(")\n");
+}
+        JOptionPane.showMessageDialog(null, servicosOrdenadosMsg.toString());
 
             boolean escolherServicos = true;
             while (escolherServicos) {
@@ -91,7 +102,12 @@ public class App {
                                       "\nDesconto aplicado: " + (desconto * 100) + "%" +
                                       "\nValor final: R$ " + valorFinal);
 
-        JOptionPane.showMessageDialog(null, "Obrigado por escolher nossos serviços!");
+        JOptionPane.showMessageDialog(null, "Obrigado por escolher nossos serviços! Entraremos em contato.");
+
+        // Exibir moda das áreas
+        JOptionPane.showMessageDialog(null, "Moda das áreas cadastradas: " + calcularModa(areas));
+
+    
     }
 
     private static double obterValorNumerico(String mensagem) {
@@ -115,4 +131,23 @@ public class App {
             }
         }
     }
+
+    // calculo a moda das áreas
+    private static double calcularModa(List<Double> areas) {
+        Map<Double, Integer> frequencia = new HashMap<>();
+        for (double area : areas) {
+            frequencia.put(area, frequencia.getOrDefault(area, 0) + 1);
+        }
+
+        int maxFrequencia = 0;
+        double moda = -1;
+        for (Map.Entry<Double, Integer> entry : frequencia.entrySet()) {
+            if (entry.getValue() > maxFrequencia) {
+                maxFrequencia = entry.getValue();
+                moda = entry.getKey();
+            }
+        }
+        return moda;
+    }
+
 }
