@@ -110,7 +110,7 @@ public class App {
     
     }
 
-    private static double obterValorNumerico(String mensagem) {
+    public static double obterValorNumerico(String mensagem) {
         while (true) {
             try {
                 String entrada = JOptionPane.showInputDialog(mensagem);
@@ -121,7 +121,7 @@ public class App {
         }
     }
 
-    private static int obterValorInteiro(String mensagem) {
+    public static int obterValorInteiro(String mensagem) {
         while (true) {
             try {
                 String entrada = JOptionPane.showInputDialog(mensagem);
@@ -133,7 +133,7 @@ public class App {
     }
 
     // calculo a moda das áreas
-    private static double calcularModa(List<Double> areas) {
+    public static double calcularModa(List<Double> areas) {
         Map<Double, Integer> frequencia = new HashMap<>();
         for (double area : areas) {
             frequencia.put(area, frequencia.getOrDefault(area, 0) + 1);
