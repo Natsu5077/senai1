@@ -73,6 +73,7 @@ class Servico {
 }
 
 class Estatisticas {
+
     public static void calcularEstatisticas(List<Jardim> jardins) {
         List<Double> areas = new ArrayList<>();
         for (Jardim j : jardins) {
@@ -82,10 +83,15 @@ class Estatisticas {
         double media = areas.stream().mapToDouble(Double::doubleValue).average().orElse(0);
         double max = areas.stream().mapToDouble(Double::doubleValue).max().orElse(0);
         double min = areas.stream().mapToDouble(Double::doubleValue).min().orElse(0);
-        double moda = calcularModa(areas);
+        double mediana = calcularMediana(areas);
+        String moda = calcularModa(areas);
 
-        JOptionPane.showMessageDialog(null, "Estatísticas dos Jardins:\nMédia: " + media +
-                "\nMáximo: " + max + "\nMínimo: " + min + "\nModa: " + moda);
+        JOptionPane.showMessageDialog(null, "Estatísticas dos Jardins:\n" +
+                "Média: " + media +
+                "\nMediana: " + mediana +
+                "\nModa: " + moda +
+                "\nMáximo: " + max +
+                "\nMínimo: " + min);
     }
 
     public static void calcularEstatisticasServicos(List<Jardim> jardins) {
@@ -115,38 +121,52 @@ class Estatisticas {
         relatorio.append("Total de serviços prestados: ").append(totalServicos).append("\n");
         relatorio.append("Custo total dos serviços: R$ ").append(String.format("%.2f", custoTotal)).append("\n");
         relatorio.append("Serviço mais comum: ").append(maisComum)
-                 .append(" (").append(maiorFrequencia).append(" vezes)\n\n");
+                .append(" (").append(maiorFrequencia).append(" vezes)\n\n");
 
         relatorio.append("Frequência e porcentagem por serviço:\n");
         for (Map.Entry<String, Integer> entry : contagemServicos.entrySet()) {
             double porcentagem = (entry.getValue() * 100.0) / totalServicos;
             relatorio.append("- ").append(entry.getKey()).append(": ")
-                     .append(entry.getValue()).append(" vez (")
-                     .append(String.format("%.2f", porcentagem)).append("%)\n");
+                    .append(entry.getValue()).append(" vez(es) (")
+                    .append(String.format("%.2f", porcentagem)).append("%)\n");
         }
 
         JOptionPane.showMessageDialog(null, relatorio.toString());
     }
 
-    public static double calcularModa(List<Double> lista) {
+    public static double calcularMediana(List<Double> lista) {
+        Collections.sort(lista);
+        int n = lista.size();
+        if (n == 0) return 0;
+
+        if (n % 2 == 0) {
+            return (lista.get(n / 2 - 1) + lista.get(n / 2)) / 2.0;
+        } else {
+            return lista.get(n / 2);
+        }
+    }
+
+    public static String calcularModa(List<Double> lista) {
         Map<Double, Integer> frequencias = new HashMap<>();
         for (double num : lista) {
             frequencias.put(num, frequencias.getOrDefault(num, 0) + 1);
         }
 
-        double moda = lista.get(0);
-        int maxFreq = 0;
+        int maxFreq = Collections.max(frequencias.values());
+        List<Double> modas = new ArrayList<>();
 
         for (Map.Entry<Double, Integer> entry : frequencias.entrySet()) {
-            if (entry.getValue() > maxFreq) {
-                moda = entry.getKey();
-                maxFreq = entry.getValue();
+            if (entry.getValue() == maxFreq && maxFreq > 1) {
+                modas.add(entry.getKey());
             }
         }
 
-        return moda;
+        if (modas.isEmpty()) return "Sem moda";
+
+        return modas.toString();
     }
 }
+
 
 public class App {
     public static void gerarRelatorioFinal(Cliente cliente, List<Jardim> jardins) {
